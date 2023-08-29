@@ -35,4 +35,6 @@ jobs:
       - name: Build Go App
         run: |
           cd simple-web-server && go build -o web main.go
+          docker build -t ${{ secrets.USERNAME }}/go-web:${{ github.sha }}
+          docker push ${{ secrets.USERNAME }}/go-web:${{ github.sha }}
           
